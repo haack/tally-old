@@ -12,8 +12,6 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	// GET POLLS AS AN ARRAY
 	$scope.polls = $firebaseArray(ref);
 
-	console.log("Polls:", $scope.polls);
-
 	$scope.vote = function(id, answer) {
 		var castVote = new Firebase("https://polll.firebaseio.com/"+id+'/'+answer);
 		localStorage[id] = true;
@@ -46,25 +44,12 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 				'no': 0
 			});
 
+			//TODO: fetch new id and scroll to
+
 			console.log("Adding poll with question: " + $scope.newpoll.question);
 		}
+
 		//reset form
 		$scope.newpoll = {};
 	};
-
-	// //ADD MESSAGE METHOD
-	// $scope.addMessage = function(e) {
-	// 	//LISTEN FOR RETURN KEY
-	// 	if (e.keyCode === 13 && $scope.msg) {
-	// 	  //ALLOW CUSTOM OR ANONYMOUS USER NAMES
-	// 	  var name = $scope.name || "anonymous";
-	// 	  //ADD TO FIREBASE
-	// 	  $scope.messages.$add({
-	// 	    from: name,
-	// 	    body: $scope.msg
-	// 	  });
-	// 	  //RESET MESSAGE
-	// 	  $scope.msg = "";
-	// 	}
-	// }
 }]);
