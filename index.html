@@ -17,28 +17,33 @@
 
     <script src="assets/js/controllers.js"></script>
 
+    <link rel="stylesheet" href="assets/css/index.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
     <meta content="width=device-width, user-scalable=no" name="viewport">
 
   </head>
   <div class="container-fluid" ng-controller="HomeController">
     <div class="col-sm-6 col-sm-offset-3">
-      <div class="row" ng-repeat="poll in polls">
-        {{poll.question}}
-
-        <div class="progress">
-          <div class="progress-bar progress-bar-success" style="width: {{poll.yes/(poll.no+poll.yes)*100}}%">
-            {{poll.yes}}
-          </div>
-          <div class="progress-bar progress-bar-danger" style="width: {{poll.no/(poll.no+poll.yes)*100}}%">
-            {{poll.no}}
-          </div>
+      <div class="row panel panel-default" ng-repeat="poll in polls">
+        <div class="panel-heading">
+          <h2 class="question">{{poll.question}}</h2>
         </div>
-        <div class="row" data-id="{{poll.id}}">
-          <div class="col-xs-6">
-            <button class="btn btn-success btn-block" type="button" ng-click="vote(poll.$id, 'yes')">Yes</button>
+        <div class="panel-body">
+          <div class="row answer-container" data-id="{{poll.id}}">
+            <div class="col-xs-12 btn-group">
+              <button class="btn btn-success btn-block btn-yes" type="button" ng-click="vote(poll.$id, 'yes')">Yes</button>
+              <button class="btn btn-danger btn-block btn-no" type="button" ng-click="vote(poll.$id, 'no')">No</button>
+            </div>
           </div>
-          <div class="col-xs-6">
-            <button class="btn btn-danger btn-block" type="button" ng-click="vote(poll.$id, 'no')">No</button>
+          <hr/>
+          <div class="progress-container">
+            <div class="progress-bar progress-bar-success progress-yes" style="width: {{poll.yes/(poll.no+poll.yes)*100}}%">
+              {{poll.yes}}
+            </div>
+            <div class="progress-bar progress-bar-danger progress-no" style="width: {{poll.no/(poll.no+poll.yes)*100}}%">
+              {{poll.no}}
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,61 @@
+body {
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.panel-body {
+  padding 10px;
+}
+
+.container-fluid {
+  margin: 20px 0;
+}
+
+.question {
+  font-size: 18px;
+  margin: 0;
+}
+
+button.btn.btn-block {
+  width: 50%;
+  height: 60px;
+  font-size: 18px;
+  font-weight: 700;
+  transition: width 1s ease-in-out;
+  display: inline-block;
+  margin-top: 0;
+}
+
+.btn-yes {
+  background-color: #43A047;
+  border-color: #388E3C;
+}
+
+.btn-no {
+  background-color: #E53935;
+  border-color: #D32F2F;
+  float: right;
+}
+
+.progress-container {
+  margin-top: 10px;
+}
+
+.progress-yes {
+  background-color: #2E7D32;
+  border-color: #1B5E20;
+  border-radius: 4px 0 0 4px;
+}
+
+.progress-no {
+  background: #C62828;
+  border-color: #B71C1C;
+  border-radius: 0 4px 4px 0;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn-none {
+  display: none;
+}
