@@ -104,21 +104,20 @@ button.btn.btn-none span {
 .form-question {
   width: 70%;
   display: inline-block;
+  border-radius: 4px 0 0 4px;
 }
 
 .form-submit {
   width: 30%;
   float: right;
+  border-radius: 0 4px 4px 0;
 }
 
 .questions-body {
   margin-bottom: 5rem;
 }
 
-#new-question {
-  border-radius: 4px 0 0 4px;
-}
-
-#submit {
-  border-radius: 0 4px 4px 0;
+.brand {
+  max-width: 70px;
+  max-height: 30px;
 }
