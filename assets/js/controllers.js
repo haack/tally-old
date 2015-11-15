@@ -41,7 +41,7 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	$scope.vote = function(id, answer) {
 		if (!localStorage[id]) {
 			var castVote = new Firebase("https://polll.firebaseio.com/"+id+'/'+answer);
-			localStorage[id] = true;
+			localStorage[id] = answer;
 
 			var buttonID = "[data-id='" + id + "']";
 
@@ -81,5 +81,23 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 
 		//reset form
 		$scope.newpoll = {};
+	};
+
+	$scope.isVoted = function(questionId) {
+		if(typeof(localStorage[questionId]) !== "undefined" && localStorage[questionId] !== null) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	};
+
+	$scope.isOptionVisible = function(questionId, answer) {
+		if($scope.isVoted(questionId)) {
+			return localStorage[questionId] !== answer ? false : true;
+		}
+		else {
+			return true;
+		}
 	};
 }]);
