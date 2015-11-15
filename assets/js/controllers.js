@@ -13,12 +13,21 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	$scope.polls = $firebaseArray(ref);
 
 	$scope.polls.$loaded().then(function(list) {
-		list.sort(function(a, b) {
-			return a.yes+a.no < b.yes+b.no;
-		});
+		$scope.sortBy(list, 'popular');
+
 	}).catch(function(error) {
 		console.log("Error, Firebase data couldn't be pulled: ", error);
 	});
+
+	$scope.sortBy = function(list, order) {
+		switch (order) {
+			case 'popular':
+				list.sort(function(a, b) {
+					return a.yes+a.no < b.yes+b.no;
+				});
+				break;
+		}
+	}
 
 	$scope.vote = function(id, answer) {
 		if (!localStorage[id]) {
@@ -52,7 +61,8 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 			pollsref.push({
 				'question': $scope.newpoll.question, 
 				'yes': 0, 
-				'no': 0
+				'no': 0,
+				'date-added': Date.now()
 			});
 
 			//TODO: fetch new id and scroll to
