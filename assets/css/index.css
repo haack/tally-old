@@ -32,11 +32,13 @@ button.btn.btn-block {
 button.btn.btn-yes {
   background-color: #43A047;
   border-color: #388E3C;
+  border-radius: 4px 0 0 4px;
 }
 
 button.btn.btn-no {
   background-color: #E53935;
   border-color: #D32F2F;
+  border-radius: 0 4px 4px 0;
   float: right;
 }
 
@@ -57,6 +59,10 @@ button.btn.btn-no {
   border-color: #B71C1C;
   border-radius: 0 4px 4px 0;
   padding-top: 3px;
+}
+
+button.btn.btn-border {
+  border-radius: 4px;
 }
 
 button.btn.btn-full {
