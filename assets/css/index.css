@@ -2,6 +2,10 @@ body {
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+hr {
+  margin: 10px 0;
+}
+
 .panel-body {
   padding 10px;
 }
@@ -25,12 +29,12 @@ button.btn.btn-block {
   margin-top: 0;
 }
 
-.btn-yes {
+button.btn.btn-yes {
   background-color: #43A047;
   border-color: #388E3C;
 }
 
-.btn-no {
+button.btn.btn-no {
   background-color: #E53935;
   border-color: #D32F2F;
   float: right;
@@ -38,18 +42,21 @@ button.btn.btn-block {
 
 .progress-container {
   margin-top: 10px;
+  height: 26px;
 }
 
 .progress-yes {
   background-color: #2E7D32;
   border-color: #1B5E20;
   border-radius: 4px 0 0 4px;
+  padding-top: 3px;
 }
 
 .progress-no {
   background: #C62828;
   border-color: #B71C1C;
   border-radius: 0 4px 4px 0;
+  padding-top: 3px;
 }
 
 .btn-full {
