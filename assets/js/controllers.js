@@ -36,6 +36,13 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 		});
 	};
 
+	$scope.addPoll = function() {
+		if ($scope.newpoll.question) {
+   			console.log("Adding poll with question: " $scope.newpoll.question);
+		}
+		//reset form
+		$scope.newpoll = {};
+	};
 
 	// //ADD MESSAGE METHOD
 	// $scope.addMessage = function(e) {

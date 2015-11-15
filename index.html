@@ -47,6 +47,11 @@
           </div>
         </div>
       </div>
+
+      <form ng-submit="addPoll()">
+        <input type="text" ng-model="newpoll.question" />
+        <input type="submit" id="submit" value="Submit" />
+      </form>
     </div>
   </div>
   </body>
