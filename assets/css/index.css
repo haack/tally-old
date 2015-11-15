@@ -114,3 +114,11 @@ button.btn.btn-none span {
 .questions-body {
   margin-bottom: 5rem;
 }
+
+#new-question {
+  border-radius: 4px 0 0 4px;
+}
+
+#submit {
+  border-radius: 0 4px 4px 0;
+}
