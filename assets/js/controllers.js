@@ -13,7 +13,7 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	$scope.polls = $firebaseArray(ref);
 
 	$scope.polls.$loaded().then(function(list) {
-		$scope.sortBy(list, 'popular');
+		$scope.sortBy(list, 'recent');
 
 	}).catch(function(error) {
 		console.log("Error, Firebase data couldn't be pulled: ", error);
@@ -24,6 +24,11 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 			case 'popular':
 				list.sort(function(a, b) {
 					return a.yes+a.no < b.yes+b.no;
+				});
+				break;
+			case 'recent':
+				list.sort(function(a, b) {
+					return a.dateadded < b.dateadded;
 				});
 				break;
 		}

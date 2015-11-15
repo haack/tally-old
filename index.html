@@ -28,7 +28,7 @@
       <div class="col-sm-6 col-sm-offset-3">
         <div class="row panel panel-default" ng-repeat="poll in polls">
           <div class="panel-heading">
-            <h2 class="question">{{poll.question}}: <span class="text-muted small">{{date(poll.dateadded)}}</span></h2>
+            <h2 class="question">{{poll.question}} <span class="text-muted small">{{poll.dateadded | date : 'short'}}</span></h2>
           </div>
           <div class="panel-body">
             <div class="row answer-container" data-id="{{poll.$id}}">
