@@ -1,16 +1,16 @@
-'use strict';
+"use strict";
 
 var app = angular.module('tally');
 
 app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
 	//init
-	localStorage['poll'] = localStorage['poll'] || {}
+	localStorage['poll'] = localStorage['poll'] || {};
 
 	//CREATE A FIREBASE REFERENCE
 	var ref = new Firebase("https://polll.firebaseio.com");
 
 	// GET POLLS AS AN ARRAY
-	$scope.polls = $firebaseArray(ref)
+	$scope.polls = $firebaseArray(ref);
 
 	$scope.polls.$loaded().then(function(list) {
 		list.sort(function(a, b) {
