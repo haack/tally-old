@@ -5,12 +5,44 @@
     <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
 
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-  </head>
 
-  <body>
-	Hello world!
+    <!-- App -->
+    <script src="assets/js/app.js"></script>
+
+    <script src="assets/js/controllers.js"></script>
+
+    <meta content="width=device-width, user-scalable=no" name="viewport">
+
+  </head>
+  <div class="container-fluid" ng-controller="HomeController">
+    <div class="col-xs-6 col-xs-offset-3">
+      <div class="row" ng-repeat="poll in polls">
+        {{poll.question}}
+
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" style="width: {{poll.yes/(poll.no+poll.yes)*100}}%">
+            {{poll.yes}}
+          </div>
+          <div class="progress-bar progress-bar-danger" style="width: {{poll.no/(poll.no+poll.yes)*100}}%">
+            {{poll.no}}
+          </div>
+        </div>
+        <div class="row" data-id="{{poll.id}}">
+          <div class="col-xs-6">
+            <button type="button" ng-click="vote(poll.$id, 'yes')">Yes</button>
+          </div>
+          <div class="col-xs-6">
+            <button type="button" ng-click="vote(poll.$id, 'no')">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   </body>
 </html>
