@@ -13,12 +13,21 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	$scope.polls = $firebaseArray(ref)
 
 	$scope.polls.$loaded().then(function(list) {
-		list.sort(function(a, b) {
-			return a.yes+a.no < b.yes+b.no;
-		});
+		$scope.sortBy(list, 'popular');
+
 	}).catch(function(error) {
 		console.log("Error, Firebase data couldn't be pulled: ", error);
 	});
+
+	$scope.sortBy = function(list, order) {
+		switch (order) {
+			case 'popular':
+				list.sort(function(a, b) {
+					return a.yes+a.no < b.yes+b.no;
+				});
+				break;
+		}
+	}
 
 	$scope.vote = function(id, answer) {
 		var castVote = new Firebase("https://polll.firebaseio.com/"+id+'/'+answer);
