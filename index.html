@@ -23,36 +23,37 @@
     <meta content="width=device-width, user-scalable=no" name="viewport">
 
   </head>
-  <div class="container-fluid" ng-controller="HomeController">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div class="row panel panel-default" ng-repeat="poll in polls">
-        <div class="panel-heading">
-          <h2 class="question">{{poll.question}}</h2>
-        </div>
-        <div class="panel-body">
-          <div class="row answer-container" data-id="{{poll.$id}}">
-            <div class="col-xs-12">
-              <button class="btn btn-success btn-block btn-yes" type="button" ng-click="vote(poll.$id, 'yes')">Yes</button>
-              <button class="btn btn-danger btn-block btn-no" type="button" ng-click="vote(poll.$id, 'no')">No</button>
+  <body>
+    <div class="container-fluid" ng-controller="HomeController">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="row panel panel-default" ng-repeat="poll in polls">
+          <div class="panel-heading">
+            <h2 class="question">{{poll.question}}</h2>
+          </div>
+          <div class="panel-body">
+            <div class="row answer-container" data-id="{{poll.$id}}">
+              <div class="col-xs-12">
+                <button class="btn btn-success btn-block btn-yes" type="button" ng-click="vote(poll.$id, 'yes')">Yes</button>
+                <button class="btn btn-danger btn-block btn-no" type="button" ng-click="vote(poll.$id, 'no')">No</button>
+              </div>
+            </div>
+            <hr/>
+            <div class="progress-container">
+              <div class="progress-bar progress-bar-success progress-yes" style="width: {{poll.yes/(poll.no+poll.yes)*100}}%">
+                {{poll.yes}}
+              </div>
+              <div class="progress-bar progress-bar-danger progress-no" style="width: {{poll.no/(poll.no+poll.yes)*100}}%">
+                {{poll.no}}
+              </div>
             </div>
           </div>
-          <hr/>
-          <div class="progress-container">
-            <div class="progress-bar progress-bar-success progress-yes" style="width: {{poll.yes/(poll.no+poll.yes)*100}}%">
-              {{poll.yes}}
-            </div>
-            <div class="progress-bar progress-bar-danger progress-no" style="width: {{poll.no/(poll.no+poll.yes)*100}}%">
-              {{poll.no}}
-            </div>
-          </div>
         </div>
-      </div>
 
-      <form ng-submit="addPoll()">
-        <input type="text" ng-model="newpoll.question" />
-        <input type="submit" id="submit" value="Submit" />
-      </form>
+        <form ng-submit="addPoll()">
+          <input type="text" ng-model="newpoll.question" />
+          <input type="submit" id="submit" value="Submit" />
+        </form>
+      </div>
     </div>
-  </div>
   </body>
 </html>
