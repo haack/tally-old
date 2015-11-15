@@ -41,13 +41,13 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 			var buttonID = "[data-id='" + id + "']";
 
 			if (answer === 'yes') {
-				$(buttonID).find("button.btn-success").addClass("btn-full btn-border");
+				$(buttonID).find("button.btn-success").addClass("btn-full");
 				$(buttonID).find("button.btn-danger").addClass("btn-none").prop('disabled', true);
 				//$(buttonID).find("button.btn-danger").fadeOut(600);
 			}
 			else {
-				$(buttonID).find("button.btn-success").addClass("btn-none");
-				$(buttonID).find("button.btn-danger").addClass("btn-full btn-border");
+				$(buttonID).find("button.btn-success").addClass("btn-none").prop('disabled', true);
+				$(buttonID).find("button.btn-danger").addClass("btn-full");
 				//$(buttonID).find("button.btn-success").fadeOut(600);
 			}
 
