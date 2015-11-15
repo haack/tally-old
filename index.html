@@ -21,7 +21,7 @@
 
   </head>
   <div class="container-fluid" ng-controller="HomeController">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-sm-6 col-sm-offset-3">
       <div class="row" ng-repeat="poll in polls">
         {{poll.question}}
 
@@ -35,10 +35,10 @@
         </div>
         <div class="row" data-id="{{poll.id}}">
           <div class="col-xs-6">
-            <button type="button" ng-click="vote(poll.$id, 'yes')">Yes</button>
+            <button class="btn btn-success btn-block" type="button" ng-click="vote(poll.$id, 'yes')">Yes</button>
           </div>
           <div class="col-xs-6">
-            <button type="button" ng-click="vote(poll.$id, 'no')">No</button>
+            <button class="btn btn-danger btn-block" type="button" ng-click="vote(poll.$id, 'no')">No</button>
           </div>
         </div>
       </div>
