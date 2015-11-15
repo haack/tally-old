@@ -39,8 +39,8 @@
           <div class="panel-body">
             <div class="row answer-container" data-id="{{poll.$id}}">
               <div class="col-xs-12">
-                <button class="btn btn-success btn-block btn-yes" type="button" ng-click="vote(poll.$id, 'yes')" ng-class="{'btn-full btn-border': isOptionVisible(poll.$id, 'yes') && isVoted(poll.$id), 'btn-none': !isOptionVisible(poll.$id, 'yes') && isVoted(poll.$id)}" ><span>Yes</span></button>
-                <button class="btn btn-danger btn-block btn-no" type="button" ng-click="vote(poll.$id, 'no')" ng-class="{'btn-full btn-border': isOptionVisible(poll.$id, 'no') && isVoted(poll.$id), 'btn-none': !isOptionVisible(poll.$id, 'no') && isVoted(poll.$id)}" ><span>No</span></button>
+                <button class="btn btn-success btn-block btn-yes" type="button" ng-click="vote(poll.$id, 'yes')" ng-class="{'btn-full btn-border': isOptionVisible(poll.$id, 'yes') &amp;&amp; isVoted(poll.$id), 'btn-none': !isOptionVisible(poll.$id, 'yes') &amp;&amp; isVoted(poll.$id)}" ><span>Yes</span></button>
+                <button class="btn btn-danger btn-block btn-no" type="button" ng-click="vote(poll.$id, 'no')" ng-class="{'btn-full btn-border': isOptionVisible(poll.$id, 'no') &amp;&amp; isVoted(poll.$id), 'btn-none': !isOptionVisible(poll.$id, 'no') &amp;&amp; isVoted(poll.$id)}" ><span>No</span></button>
               </div>
             </div>
             <hr/>
