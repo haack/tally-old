@@ -1,16 +1,16 @@
-'use strict';
+"use strict";
 
 var app = angular.module('tally');
 
 app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
 	//init
-	localStorage['poll'] = localStorage['poll'] || {}
+	localStorage['poll'] = localStorage['poll'] || {};
 
 	//CREATE A FIREBASE REFERENCE
 	var ref = new Firebase("https://polll.firebaseio.com");
 
 	// GET POLLS AS AN ARRAY
-	$scope.polls = $firebaseArray(ref)
+	$scope.polls = $firebaseArray(ref);
 
 	$scope.polls.$loaded().then(function(list) {
 		$scope.sortBy(list, 'popular');
@@ -30,25 +30,27 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	}
 
 	$scope.vote = function(id, answer) {
-		var castVote = new Firebase("https://polll.firebaseio.com/"+id+'/'+answer);
-		localStorage[id] = true;
+		if (!localStorage[id]) {
+			var castVote = new Firebase("https://polll.firebaseio.com/"+id+'/'+answer);
+			localStorage[id] = true;
 
-		var buttonID = "[data-id='" + id + "']";
+			var buttonID = "[data-id='" + id + "']";
 
-		if (answer === 'yes') {
-			$(buttonID).find("button.btn-success").addClass("btn-full btn-border").prop('disabled', true);
-			$(buttonID).find("button.btn-danger").addClass("btn-none");
-			$(buttonID).find("button.btn-danger").fadeOut(600);
+			if (answer === 'yes') {
+				$(buttonID).find("button.btn-success").addClass("btn-full btn-border");
+				$(buttonID).find("button.btn-danger").addClass("btn-none").prop('disabled', true);
+				//$(buttonID).find("button.btn-danger").fadeOut(600);
+			}
+			else {
+				$(buttonID).find("button.btn-success").addClass("btn-none");
+				$(buttonID).find("button.btn-danger").addClass("btn-full btn-border");
+				//$(buttonID).find("button.btn-success").fadeOut(600);
+			}
+
+			castVote.transaction(function(currentVoteCount) {
+				return currentVoteCount + 1;
+			});
 		}
-		else {
-			$(buttonID).find("button.btn-success").addClass("btn-none");
-			$(buttonID).find("button.btn-danger").addClass("btn-full btn-border").prop('disabled', true);
-			$(buttonID).find("button.btn-success").fadeOut(600);
-		}
-
-		castVote.transaction(function(currentVoteCount) {
-			return currentVoteCount + 1;
-		});
 	};
 
 	$scope.addPoll = function() {
