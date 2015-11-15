@@ -41,30 +41,22 @@
                 </button>
               </div>
             </div>
-            <div class="panel-body">
-              <div class="row answer-container" data-id="{{poll.$id}}">
-                <div class="col-xs-12">
-                  <button class="btn btn-success btn-block btn-yes" type="button" ng-click="vote(poll.$id, 'yes')">Yes</button>
-                  <button class="btn btn-danger btn-block btn-no" type="button" ng-click="vote(poll.$id, 'no')">No</button>
-                </div>
+            <hr/>
+            <div class="progress-container">
+              <div class="progress-bar progress-bar-success progress-yes" style="width: {{poll.yes/(poll.no+poll.yes)*100}}%">
+                {{poll.yes}}
               </div>
-              <hr/>
-              <div class="progress-container">
-                <div class="progress-bar progress-bar-success progress-yes" style="width: {{poll.yes/(poll.no+poll.yes)*100}}%">
-                  {{poll.yes}}
-                </div>
-                <div class="progress-bar progress-bar-danger progress-no" style="width: {{poll.no/(poll.no+poll.yes)*100}}%">
-                  {{poll.no}}
-                </div>
+              <div class="progress-bar progress-bar-danger progress-no" style="width: {{poll.no/(poll.no+poll.yes)*100}}%">
+                {{poll.no}}
               </div>
             </div>
           </div>
-
-          <form ng-submit="addPoll()">
-            <input type="text" ng-model="newpoll.question" />
-            <input type="submit" id="submit" value="Submit" />
-          </form>
         </div>
+
+        <form ng-submit="addPoll()">
+          <input type="text" ng-model="newpoll.question" />
+          <input type="submit" id="submit" value="Submit" />
+        </form>
       </div>
     </div>
   </body>
