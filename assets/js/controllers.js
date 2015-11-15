@@ -53,7 +53,6 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	};
 
 	$scope.addPoll = function() {
-		console.log("Here");
 		if ($scope.newpoll.question) {
 			var pollsref = new Firebase('https://polll.firebaseio.com/');
 
