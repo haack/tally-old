@@ -27,6 +27,10 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 				});
 				break;
 		}
+	};
+
+	$scope.date = function(ms) {
+		return Date(ms);
 	}
 
 	$scope.vote = function(id, answer) {
@@ -61,7 +65,7 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 				'question': $scope.newpoll.question, 
 				'yes': 0, 
 				'no': 0,
-				'date-added': Date.now()
+				'dateadded': Date.now()
 			});
 
 			//TODO: fetch new id and scroll to
