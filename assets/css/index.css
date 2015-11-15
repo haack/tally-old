@@ -66,11 +66,8 @@ button.btn.btn-no {
   padding-top: 3px;
 }
 
-button.btn.btn-border {
-  border-radius: 4px;
-}
-
 button.btn.btn-full {
+  border-radius: 4px;
   width: 100%;
 }
 
@@ -78,4 +75,9 @@ button.btn.btn-none {
   width: 0;
   padding: 0;
   border: none;
+}
+
+button.btn.btn-none span {
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
 }
