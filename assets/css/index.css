@@ -111,6 +111,19 @@ button.btn.btn-none span {
   width: 30%;
   float: right;
   border-radius: 0 4px 4px 0;
+  color: #fff;
+  background-color: #7E57C2;
+  border-color: #512DA8;
+}
+
+.form-submit:hover {
+  color: #fff;
+  background-color: #512DA8;
+}
+
+.form-submit:focus, .form-submit:active {
+  color: #fff;
+  background-color: #673AB7;
 }
 
 .questions-body {
