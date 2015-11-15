@@ -77,7 +77,13 @@ button.btn.btn-none {
   border: none;
 }
 
+button.btn span {
+  transition: width 1s ease-in-out;
+  display: inline-flex;
+  overflow: hidden;
+  width: 30px;
+}
+
 button.btn.btn-none span {
-  transition: all 0.5s ease-in-out;
-  opacity: 0;
+  width: 0;
 }
