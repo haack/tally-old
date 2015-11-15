@@ -72,6 +72,10 @@ button.btn.btn-full {
   cursor: default;
 }
 
+button.btn.btn-full:focus {
+  outline: 0;
+}
+
 button.btn.btn-none {
   width: 0;
   padding: 0;
