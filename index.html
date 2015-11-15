@@ -24,7 +24,7 @@
 
   </head>
   <body>
-    <div class="container-fluid" ng-controller="HomeController">
+    <div class="container-fluid questions-body" ng-controller="HomeController">
       <div class="col-sm-6 col-sm-offset-3">
         <div class="btn-group" data-toggle="buttons">
           <button class="btn" ng-click="sortBy(polls, 'popular')" >Popular</button>
@@ -33,17 +33,14 @@
 
         <div class="row panel panel-default" ng-repeat="poll in polls">
           <div class="panel-heading">
-            <h2 class="question">{{poll.question}} <span class="text-muted small">{{poll.dateadded | date : 'short'}}</span></h2>
+            <h2 class="question">{{poll.question}}</h2>
+            <div class="text-muted small text-right">{{poll.dateadded | date : 'short'}}</div>
           </div>
           <div class="panel-body">
             <div class="row answer-container" data-id="{{poll.$id}}">
               <div class="col-xs-12">
-                <button class="btn btn-success btn-block btn-yes" type="button" ng-click="vote(poll.$id, 'yes')">
-                  <span>Yes</span>
-                </button>
-                <button class="btn btn-danger btn-block btn-no" type="button" ng-click="vote(poll.$id, 'no')">
-                  <span>No</span>
-                </button>
+                <button class="btn btn-success btn-block btn-yes" type="button" ng-click="vote(poll.$id, 'yes')" ng-show="isOptionVisible(poll.$id, 'yes')" ng-class="{'btn-full btn-border': isOptionVisible(poll.$id, 'yes') && isVoted(poll.$id)}" ><span>Yes</span></button>
+                <button class="btn btn-danger btn-block btn-no" type="button" ng-click="vote(poll.$id, 'no')" ng-show="isOptionVisible(poll.$id, 'no')" ng-class="{'btn-full btn-border': isOptionVisible(poll.$id, 'no') && isVoted(poll.$id)}" ><span>No</span></button>
               </div>
             </div>
             <hr/>
@@ -57,11 +54,18 @@
             </div>
           </div>
         </div>
-
-        <form ng-submit="addPoll()">
-          <input type="text" ng-model="newpoll.question" />
-          <input type="submit" id="submit" value="Submit" />
-        </form>
+      </div>
+      <div class="add-new-poll">
+        <div class="col-xs-10 col-xs-offset-1">
+          <form>
+            <div class="input-group">
+              <input type="text" ng-model="newpoll.question" class="form-control" placeholder="New question" />
+              <span class="input-group-btn">
+                <input type="submit" id="submit" value="Submit" class="btn btn-info" ng-click="addPoll()" />
+              </span>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </body>
