@@ -9,7 +9,7 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	//CREATE A FIREBASE REFERENCE
 	var ref = new Firebase("https://polll.firebaseio.com");
 
-	// GET MESSAGES AS AN ARRAY
+	// GET POLLS AS AN ARRAY
 	$scope.polls = $firebaseArray(ref);
 
 	console.log("Polls:", $scope.polls);
@@ -17,6 +17,19 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	$scope.vote = function(id, answer) {
 		var castVote = new Firebase("https://polll.firebaseio.com/"+id+'/'+answer);
 		localStorage[id] = true;
+
+		var buttonID = "[data-id='" + id + "']";
+
+		if (answer === 'yes') {
+			$(buttonID).find("button.btn-success").addClass("btn-full").prop('disabled', true);
+			$(buttonID).find("button.btn-danger").addClass("btn-none");
+			$(buttonID).find("button.btn-danger").fadeOut(700);
+		}
+		else {
+			$(buttonID).find("button.btn-success").addClass("btn-none");
+			$(buttonID).find("button.btn-danger").addClass("btn-full").prop('disabled', true);
+			$(buttonID).find("button.btn-success").fadeOut(700);
+		}
 
 		castVote.transaction(function(currentVoteCount) {
 			return currentVoteCount + 1;

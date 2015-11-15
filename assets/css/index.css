@@ -59,10 +59,10 @@ button.btn.btn-no {
   padding-top: 3px;
 }
 
-.btn-full {
+button.btn.btn-full {
   width: 100%;
 }
 
-.btn-none {
-  display: none;
+button.btn.btn-none {
+  width: 0;
 }
