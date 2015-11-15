@@ -69,6 +69,7 @@ button.btn.btn-no {
 button.btn.btn-full {
   border-radius: 4px;
   width: 100%;
+  cursor: default;
 }
 
 button.btn.btn-none {
