@@ -84,7 +84,6 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	};
 
 	$scope.isVoted = function(questionId) {
-
 		if(typeof(localStorage[questionId]) !== "undefined" && localStorage[questionId] !== null) {
 			return true;
 		}
@@ -94,7 +93,6 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	};
 
 	$scope.isOptionVisible = function(questionId, answer) {
-
 		if($scope.isVoted(questionId)) {
 			return localStorage[questionId] !== answer ? false : true;
 		}
