@@ -10,7 +10,15 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	var ref = new Firebase("https://polll.firebaseio.com");
 
 	// GET POLLS AS AN ARRAY
-	$scope.polls = $firebaseArray(ref);
+	$scope.polls = $firebaseArray(ref)
+
+	$scope.polls.$loaded().then(function(list) {
+		list.sort(function(a, b) {
+			return a.yes+a.no < b.yes+b.no;
+		});
+	}).catch(function(error) {
+		console.log("Error, Firebase data couldn't be pulled: ", error);
+	});
 
 	$scope.vote = function(id, answer) {
 		var castVote = new Firebase("https://polll.firebaseio.com/"+id+'/'+answer);

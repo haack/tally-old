@@ -25,7 +25,7 @@
   </head>
   <div class="container-fluid" ng-controller="HomeController">
     <div class="col-sm-6 col-sm-offset-3">
-      <div class="row panel panel-default" ng-repeat="poll in polls | orderBy:'-(yes+no)'">
+      <div class="row panel panel-default" ng-repeat="poll in polls">
         <div class="panel-heading">
           <h2 class="question">{{poll.question}}</h2>
         </div>
