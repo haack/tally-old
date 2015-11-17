@@ -8,7 +8,7 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	var sortMode = 'popular' //set default sortMode
 
 	//CREATE A FIREBASE REFERENCE
-	var ref = new Firebase("https://polll.firebaseio.com");
+	var ref = new Firebase("https://polll.firebaseio.com/v1/");
 
 	// GET POLLS AS AN ARRAY
 	$scope.polls = $firebaseArray(ref);
@@ -43,7 +43,7 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 
 	$scope.vote = function(id, answer) {
 		if (!localStorage[id]) {
-			var castVote = new Firebase("https://polll.firebaseio.com/"+id+'/'+answer);
+			var castVote = new Firebase("https://polll.firebaseio.com/v1/"+id+'/'+answer);
 			localStorage[id] = answer;
 
 			castVote.transaction(function(currentVoteCount) {
@@ -55,7 +55,7 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	$scope.addPoll = function() {
 		console.log("Here");
 		if ($scope.newpoll.question) {
-			var pollsref = new Firebase('https://polll.firebaseio.com/');
+			var pollsref = new Firebase('https://polll.firebaseio.com/v1/');
 
 			pollsref.push({
 				'question': $scope.newpoll.question,
@@ -63,7 +63,7 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 				'no': 0,
 				'dateadded': Date.now()
 			// }, function() {
-				//re-sort feed (disabled as it doesn't reorder including first tool wtf....)
+				//re-sort feed (disabled as it doesn't reorder including first poll, wtf....)
 				// $scope.sortBy($scope.polls, sortMode); //sort with current mode
 			});
 
