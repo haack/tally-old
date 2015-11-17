@@ -104,13 +104,33 @@ button.btn.btn-none span {
 .form-question {
   width: 70%;
   display: inline-block;
+  border-radius: 4px 0 0 4px;
 }
 
 .form-submit {
   width: 30%;
   float: right;
+  border-radius: 0 4px 4px 0;
+  color: #fff;
+  background-color: #7E57C2;
+  border-color: #512DA8;
+}
+
+.form-submit:hover {
+  color: #fff;
+  background-color: #512DA8;
+}
+
+.form-submit:focus, .form-submit:active {
+  color: #fff;
+  background-color: #673AB7;
 }
 
 .questions-body {
   margin-bottom: 5rem;
+}
+
+.brand {
+  max-width: 70px;
+  max-height: 30px;
 }

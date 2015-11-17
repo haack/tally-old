@@ -21,15 +21,18 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	});
 
 	$scope.sortBy = function(list, order) {
+		$("li.active").removeClass("active");
 		switch (order) {
 			case 'popular':
 				sortMode = 'popular';
+				$("li.popular").addClass("active");
 				list.sort(function(a, b) {
 					return a.yes+a.no < b.yes+b.no ? 1 : -1;
 				});
 				break;
 			case 'recent':
 				sortMode = 'recent';
+				$("li.recent").addClass("active");
 				list.sort(function(a, b) {
 					return a.dateadded < b.dateadded ? 1 : -1;
 				});
@@ -53,7 +56,6 @@ app.controller('HomeController', ['$scope', '$firebaseArray', function($scope, $
 	};
 
 	$scope.addPoll = function() {
-		console.log("Here");
 		if ($scope.newpoll.question) {
 			var pollsref = new Firebase('https://polll.firebaseio.com/v1/');
 
